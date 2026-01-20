@@ -1,0 +1,8 @@
+# OpenCode plans and session data
+.opencode/
+
+# macOS
+.DS_Store
+
+# Downloaded artifacts
+checksums.txt

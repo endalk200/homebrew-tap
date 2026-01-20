@@ -71,7 +71,7 @@ class Mytool < Formula
   desc "Description of your tool"
   homepage "https://github.com/endalk200/mytool"
   url "https://github.com/endalk200/mytool/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
   license "MIT"
 
   depends_on "go" => :build
@@ -93,7 +93,7 @@ class Mytool < Formula
   desc "Description of your tool"
   homepage "https://github.com/endalk200/mytool"
   url "https://github.com/endalk200/mytool/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
   license "MIT"
 
   depends_on "rust" => :build
@@ -120,22 +120,22 @@ class Mytool < Formula
   on_macos do
     on_arm do
       url "https://github.com/endalk200/mytool/releases/download/v#{version}/mytool-darwin-arm64.tar.gz"
-      sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
     end
     on_intel do
       url "https://github.com/endalk200/mytool/releases/download/v#{version}/mytool-darwin-amd64.tar.gz"
-      sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/endalk200/mytool/releases/download/v#{version}/mytool-linux-arm64.tar.gz"
-      sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
     end
     on_intel do
       url "https://github.com/endalk200/mytool/releases/download/v#{version}/mytool-linux-amd64.tar.gz"
-      sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
     end
   end
 
@@ -156,7 +156,7 @@ Add your cask to `Casks/<name>.rb`:
 ```ruby
 cask "myapp" do
   version "1.0.0"
-  sha256 "<REPLACE_WITH_ACTUAL_64_CHAR_SHA256>"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # Replace with actual checksum
 
   url "https://github.com/endalk200/myapp/releases/download/v#{version}/MyApp-#{version}.dmg"
   name "MyApp"
