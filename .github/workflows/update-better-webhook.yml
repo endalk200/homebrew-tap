@@ -45,8 +45,8 @@ jobs:
             VERSION="${TAG#@better-webhook/cli@}"
           fi
 
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Found release: $TAG (version: $VERSION)"
 
       - name: Check if update needed
@@ -55,7 +55,7 @@ jobs:
           VERSION="${{ steps.release.outputs.version }}"
 
           if [ -z "$VERSION" ]; then
-            echo "needs_update=false" >> $GITHUB_OUTPUT
+            echo "needs_update=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -67,12 +67,12 @@ jobs:
             
             if [ "$CURRENT" = "$VERSION" ]; then
               echo "Already up to date"
-              echo "needs_update=false" >> $GITHUB_OUTPUT
+              echo "needs_update=false" >> "$GITHUB_OUTPUT"
               exit 0
             fi
           fi
 
-          echo "needs_update=true" >> $GITHUB_OUTPUT
+          echo "needs_update=true" >> "$GITHUB_OUTPUT"
 
       - name: Download checksums
         if: steps.check.outputs.needs_update == 'true'
@@ -91,10 +91,10 @@ jobs:
         if: steps.check.outputs.needs_update == 'true'
         id: hashes
         run: |
-          echo "darwin_arm64=$(grep 'better-webhook-darwin-arm64$' checksums.txt | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-          echo "darwin_x64=$(grep 'better-webhook-darwin-x64$' checksums.txt | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-          echo "linux_arm64=$(grep 'better-webhook-linux-arm64$' checksums.txt | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-          echo "linux_x64=$(grep 'better-webhook-linux-x64$' checksums.txt | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          echo "darwin_arm64=$(grep 'better-webhook-darwin-arm64$' checksums.txt | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "darwin_x64=$(grep 'better-webhook-darwin-x64$' checksums.txt | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "linux_arm64=$(grep 'better-webhook-linux-arm64$' checksums.txt | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "linux_x64=$(grep 'better-webhook-linux-x64$' checksums.txt | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
 
       - name: Generate formula
         if: steps.check.outputs.needs_update == 'true'
@@ -112,7 +112,7 @@ jobs:
           # Homebrew formula for better-webhook CLI
           # Auto-updated by update-better-webhook workflow
           class BetterWebhook < Formula
-            desc "Type-safe webhook handling CLI for development and testing"
+            desc "A modern CLI tool for webhook development, testing, and debugging. Capture incoming webhooks, replay them against your local server, manage reusable templates, and generate provider-specific signatures automatically."
             homepage "https://github.com/endalk200/better-webhook"
             version "VERSION_PLACEHOLDER"
             license "MIT"
