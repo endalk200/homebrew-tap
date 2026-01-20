@@ -16,15 +16,28 @@ brew install endalk200/tap/<formula>
 
 ## Available Formulae
 
-| Formula | Description |
-|---------|-------------|
-| *Coming soon* | |
+| Formula                                                       | Description                                                |
+| ------------------------------------------------------------- | ---------------------------------------------------------- |
+| [better-webhook](https://github.com/endalk200/better-webhook) | Type-safe webhook handling CLI for development and testing |
+
+### better-webhook
+
+```bash
+brew install endalk200/tap/better-webhook
+```
+
+A CLI tool for webhook development, testing, and debugging. Features include:
+
+- Capture incoming webhooks from any provider
+- Replay captured webhooks to local endpoints
+- Auto-generate signatures for Stripe, GitHub, Shopify, Slack, and more
+- Interactive dashboard UI
 
 ## Available Casks
 
-| Cask | Description |
-|------|-------------|
-| *Coming soon* | |
+| Cask          | Description |
+| ------------- | ----------- |
+| _Coming soon_ |             |
 
 ## Adding a New Formula
 
