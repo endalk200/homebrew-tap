@@ -87,9 +87,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          rm -f checksums.txt
           gh release download "${{ steps.release.outputs.tag }}" \
             --repo endalk200/better-webhook \
             --pattern checksums.txt \
+            --clobber \
             --dir .
 
           echo "Downloaded checksums:"
