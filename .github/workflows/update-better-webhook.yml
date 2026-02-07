@@ -31,6 +31,12 @@ jobs:
           if [ -n "${{ inputs.version }}" ]; then
             VERSION="${{ inputs.version }}"
             TAG="@better-webhook/cli@${VERSION}"
+
+            # Ensure the release exists for the requested tag
+            if ! gh release view "$TAG" --repo endalk200/better-webhook >/dev/null 2>&1; then
+              echo "Release not found for tag: $TAG"
+              exit 1
+            fi
           else
             # Get the latest CLI release tag
             TAG=$(gh release list --repo endalk200/better-webhook \
