@@ -4,7 +4,7 @@
 # Homebrew formula for better-webhook CLI
 # Auto-updated by update-better-webhook workflow
 class BetterWebhook < Formula
-  desc "A modern CLI tool for webhook development, testing, and debugging. Capture incoming webhooks, replay them against your local server, manage reusable templates, and generate provider-specific signatures automatically."
+  desc "Modern CLI for developing and testing webhooks"
   homepage "https://github.com/endalk200/better-webhook"
   version "3.8.0"
   license "MIT"
