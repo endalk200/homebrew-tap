@@ -6,28 +6,28 @@
 class BetterWebhook < Formula
   desc "Modern CLI for developing and testing webhooks"
   homepage "https://github.com/endalk200/better-webhook"
-  version "3.9.0"
+  version "3.10.0"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-darwin-arm64"
-      sha256 "a05c8801f0d8d76d1f12982d36b3f85cfcf6970b59092ed9d86ae240a0b5db9f"
+      sha256 "8fc5554ebb2057573f15da12902194df5d97530531f7338c4ae1ec66e9be0ba0"
     end
     on_intel do
       url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-darwin-x64"
-      sha256 "8bcc5f1c6bd4c63a21a5a0fdd648f45149f50fce1e0e40732f6a7345a54bf677"
+      sha256 "20a4fadb582c47ab2b943a4b0a32da9a8e92557b89988e60662818972ec0b7ef"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-linux-arm64"
-      sha256 "7695da1349e961f975976c2c808b5c9ddd1428d5f0529a1fbcb1d35ded4b0d2c"
+      sha256 "6621d375f3cc18d3a164de51e0a5533a8958ac31cee3a1b90b0c76aff0f6cbaa"
     end
     on_intel do
       url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-linux-x64"
-      sha256 "441e3aa5beb7ebb4c5e2728e376c7240262085e0b1b1bc1199fd356fa128a3e4"
+      sha256 "732d004a392526ba2313380bc1da30a7c79c3f753907486a406c6a99e7151699"
     end
   end
 
