@@ -8,9 +8,8 @@ on:
         description: "Version to update to (leave empty to fetch latest)"
         required: false
         type: string
-  # Check for new releases periodically
-  schedule:
-    - cron: "0 */12 * * *" # Every 12 hours
+  # Manual-only fallback updater.
+  # Primary formula updates are now expected from the main repo release pipeline.
 
 jobs:
   check-and-update:
