@@ -1,0 +1,45 @@
+name: Auto-fix brew style
+
+on:
+  pull_request_target:
+    paths:
+      - "Casks/**"
+      - "Formula/**"
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  style-fix:
+    name: Fix Homebrew style
+    runs-on: macos-14
+    # Only run on PRs from branches in this repo (not forks) for security
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Checkout PR branch
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        run: |
+          git fetch origin ${{ github.event.pull_request.head.ref }}
+          git checkout ${{ github.event.pull_request.head.ref }}
+
+      - name: Run brew style --fix
+        run: brew style --fix endalk200/tap 2>&1 || true
+
+      - name: Commit and push style fixes
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        run: |
+          if git diff --quiet; then
+            echo "No style fixes needed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "style: auto-fix brew style violations"
+          git push origin ${{ github.event.pull_request.head.ref }}
