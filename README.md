@@ -18,13 +18,12 @@ brew install endalk200/tap/<formula>
 
 | Formula                                                       | Description                                                |
 | ------------------------------------------------------------- | ---------------------------------------------------------- |
-| [better-webhook](https://github.com/endalk200/better-webhook) | Type-safe webhook handling CLI for development and testing |
 | [lazygit-endalk](https://github.com/endalk200/lazygit)        | A simple TUI for git commands (Personal fork)              |
 
 ### better-webhook
 
 ```bash
-brew install endalk200/tap/better-webhook
+brew install --cask endalk200/tap/better-webhook
 ```
 
 A CLI tool for webhook development, testing, and debugging. Features include:
@@ -46,9 +45,9 @@ This is personal fork of [lazygit](https://github.com/jesseduffield/lazygit) wit
 
 ## Available Casks
 
-| Cask          | Description |
-| ------------- | ----------- |
-| _Coming soon_ |             |
+| Cask                                                           | Description                                                |
+| -------------------------------------------------------------- | ---------------------------------------------------------- |
+| [better-webhook](https://github.com/endalk200/better-webhook) | Type-safe webhook handling CLI for development and testing |
 
 ## Adding a New Formula
 
