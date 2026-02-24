@@ -30,7 +30,8 @@ jobs:
           # Use input version or fetch latest
           if [ -n "${{ inputs.version }}" ]; then
             VERSION="${{ inputs.version }}"
-            TAG="@better-webhook/cli@${VERSION}"
+            VERSION="${VERSION#v}"
+            TAG="v${VERSION}"
 
             # Ensure the release exists for the requested tag
             if ! gh release view "$TAG" --repo endalk200/better-webhook >/dev/null 2>&1; then
@@ -38,17 +39,17 @@ jobs:
               exit 1
             fi
           else
-            # Get the latest CLI release tag
+            # Get the latest semver release tag (vX.Y.Z)
             TAG=$(gh release list --repo endalk200/better-webhook \
               --json tagName \
-              --jq '[.[] | select(.tagName | startswith("@better-webhook/cli@"))][0].tagName')
+              --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))][0].tagName')
             
             if [ -z "$TAG" ]; then
               echo "No CLI release found"
               exit 0
             fi
             
-            VERSION="${TAG#@better-webhook/cli@}"
+            VERSION="${TAG#v}"
           fi
 
           {
@@ -131,22 +132,22 @@ jobs:
 
             on_macos do
               on_arm do
-                url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-darwin-arm64"
+                url "https://github.com/endalk200/better-webhook/releases/download/v#{version}/better-webhook-darwin-arm64"
                 sha256 "DARWIN_ARM64_PLACEHOLDER"
               end
               on_intel do
-                url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-darwin-x64"
+                url "https://github.com/endalk200/better-webhook/releases/download/v#{version}/better-webhook-darwin-x64"
                 sha256 "DARWIN_X64_PLACEHOLDER"
               end
             end
 
             on_linux do
               on_arm do
-                url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-linux-arm64"
+                url "https://github.com/endalk200/better-webhook/releases/download/v#{version}/better-webhook-linux-arm64"
                 sha256 "LINUX_ARM64_PLACEHOLDER"
               end
               on_intel do
-                url "https://github.com/endalk200/better-webhook/releases/download/%40better-webhook%2Fcli%40#{version}/better-webhook-linux-x64"
+                url "https://github.com/endalk200/better-webhook/releases/download/v#{version}/better-webhook-linux-x64"
                 sha256 "LINUX_X64_PLACEHOLDER"
               end
             end
@@ -181,7 +182,7 @@ jobs:
           body: |
             Automated update of better-webhook formula to version ${{ steps.release.outputs.version }}.
 
-            **Release:** [@better-webhook/cli@${{ steps.release.outputs.version }}](https://github.com/endalk200/better-webhook/releases/tag/${{ steps.release.outputs.tag }})
+            **Release:** [v${{ steps.release.outputs.version }}](https://github.com/endalk200/better-webhook/releases/tag/${{ steps.release.outputs.tag }})
 
             **Checksums:**
             - darwin-arm64: `${{ steps.hashes.outputs.darwin_arm64 }}`
