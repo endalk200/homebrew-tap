@@ -8,46 +8,53 @@ Personal Homebrew tap for CLI tools and applications by [@endalk200](https://git
 brew tap endalk200/tap
 ```
 
-Or install a formula directly (auto-taps):
+Install directly without manually tapping first:
 
 ```bash
-brew install endalk200/tap/<formula>
-```
+# Formula
+brew install endalk200/tap/lazygit-endalk
 
-## Available Formulae
-
-| Formula                                                       | Description                                                |
-| ------------------------------------------------------------- | ---------------------------------------------------------- |
-| [lazygit-endalk](https://github.com/endalk200/lazygit)        | A simple TUI for git commands (Personal fork)              |
-
-### better-webhook
-
-```bash
+# Cask
 brew install --cask endalk200/tap/better-webhook
 ```
 
-A CLI tool for webhook development, testing, and debugging. Features include:
+## Available Packages
+
+### Formulae (sorted)
+
+| Formula                                                | Description                                       |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| [lazygit-endalk](https://github.com/endalk200/lazygit) | Simple terminal UI for git commands (endalk fork) |
+
+### Casks (sorted)
+
+| Cask                                                          | Description                                    |
+| ------------------------------------------------------------- | ---------------------------------------------- |
+| [better-webhook](https://github.com/endalk200/better-webhook) | Modern CLI for developing and testing webhooks |
+
+## Package Notes
+
+### lazygit-endalk
+
+Personal fork of [lazygit](https://github.com/jesseduffield/lazygit) with extra features that are not intended for upstream.
+
+- AI-powered commit message generation that is provider-agnostic
+
+### better-webhook
+
+CLI for webhook development, testing, and debugging.
 
 - Capture incoming webhooks from any provider
 - Replay captured webhooks to local endpoints
 - Auto-generate signatures for Stripe, GitHub, Shopify, Slack, and more
-- Interactive dashboard UI
 
-### lazygit
+## better-webhook Release Flow
 
-```bash
-brew install endalk200/tap/lazygit-endalk
-```
-
-This is personal fork of [lazygit](https://github.com/jesseduffield/lazygit) with extra features that will not be merged to upstream. This feature includes:
-
-- AI powered commit message generation that is provider agnostic
-
-## Available Casks
-
-| Cask                                                           | Description                                                |
-| -------------------------------------------------------------- | ---------------------------------------------------------- |
-| [better-webhook](https://github.com/endalk200/better-webhook) | Type-safe webhook handling CLI for development and testing |
+- `better-webhook` releases update `Casks/better-webhook.rb` through a PR created by GoReleaser.
+- `main` should only be updated through PRs with required checks passing.
+- `brew test-bot` is the merge gate for syntax/style validity.
+- Auto-merge is restricted to trusted bot PRs that only touch `Casks/better-webhook.rb`.
+- If CI fails with `Cask/StanzaOrder` or `Cask/StanzaGrouping`, fix style in the PR and merge only after checks are green.
 
 ## Adding a New Formula
 
